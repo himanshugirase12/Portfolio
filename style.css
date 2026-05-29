@@ -625,3 +625,7 @@ footer {
     .skills-grid { grid-template-columns: 1fr; }
     .hero-content h1 { font-size: 2.5rem; }
 }
+
+.mongo-color {
+    color: #47A248;
+}
