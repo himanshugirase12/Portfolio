@@ -10,6 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- ✅ EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
     <header id="navbar">
@@ -41,7 +44,13 @@
                 <p class="tagline slide-up delay-2">I build responsive, dynamic, and beautiful web applications using the MERN stack.</p>
                 <div class="hero-actions slide-up delay-3">
                     <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="#" class="btn btn-secondary"><i class="fas fa-download"></i> Download Resume</a>
+                    <!-- ✅ Download Resume Button — points to your resume PDF -->
+                    <a href="./assets/resume/Himanshu_Girase_Resume.pdf" 
+                       download="Himanshu_Girase_Resume.pdf"
+                       class="btn btn-secondary"
+                       id="resume-btn">
+                        <i class="fas fa-download"></i> Download Resume
+                    </a>
                 </div>
                 <div class="social-links slide-up delay-4">
                     <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
@@ -92,30 +101,16 @@
                     </div>
                     <div class="skill-card">
                         <i class="fab fa-react skill-icon react-color"></i>
-                        <h3>React</h3>
+                        <h3>React (Learning)</h3>
                     </div>
                     <div class="skill-card">
                         <i class="fab fa-node-js skill-icon node-color"></i>
-                        <h3>Node.js</h3>
+                        <h3>Node.js (Basic)</h3>
                     </div>
                     <div class="skill-card">
                         <i class="fab fa-git-alt skill-icon git-color"></i>
                         <h3>Git & GitHub</h3>
                     </div>
-                    <div class="skill-card">
-                        <i class="fas fa-server skill-icon express-color"></i>
-                        <h3>Express</h3>
-                    </div>
-                    <div class="skill-card">
-                        <i class="fas fa-database skill-icon"></i>
-                        <h3>SQL</h3>
-                    </div>
-                    <div class="skill-card">
-                        <i class="fas fa-leaf skill-icon mongo-color"></i>
-                        <h3>MongoDB</h3>
-                    </div>
-                    
-
                 </div>
             </div>
         </section>
@@ -127,7 +122,6 @@
                     <h2><span class="highlight">03.</span> Featured Projects</h2>
                 </div>
                 <div class="projects-grid">
-                    <!-- Project 1 -->
                     <div class="project-card">
                         <div class="project-image">
                             <img src="./assets/img/ecommerce_project_1775116965191.png" alt="E-commerce Website">
@@ -140,14 +134,10 @@
                             <h3>E-commerce Website</h3>
                             <p>A fully responsive e-commerce web application featuring a functional shopping cart, product listings, and sleek UI. Built to demonstrate front-end fundamentals.</p>
                             <div class="project-tech">
-                                <span>HTML</span>
-                                <span>CSS</span>
-                                <span>JavaScript</span>
+                                <span>HTML</span><span>CSS</span><span>JavaScript</span>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Project 2 -->
                     <div class="project-card">
                         <div class="project-image">
                             <img src="./assets/img/task_board_project_1775117119788.png" alt="Task Management App">
@@ -160,13 +150,10 @@
                             <h3>Task Management Dashboard</h3>
                             <p>A drag-and-drop kanban board for managing daily tasks and workflows. Includes task categorization and a customizable dark mode interface.</p>
                             <div class="project-tech">
-                                <span>React</span>
-                                <span>CSS Modules</span>
+                                <span>React</span><span>CSS Modules</span>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Project 3 -->
                     <div class="project-card">
                         <div class="project-image">
                             <img src="./assets/img/chat_app_project_1775117140893.png" alt="Real-Time Chat App">
@@ -179,9 +166,7 @@
                             <h3>Real-Time Chat Application</h3>
                             <p>A real-time messaging platform allowing users to communicate instantly in separate rooms. Incorporates a fast backend architecture.</p>
                             <div class="project-tech">
-                                <span>Node.js</span>
-                                <span>Socket.io</span>
-                                <span>Vanilla JS</span>
+                                <span>Node.js</span><span>Socket.io</span><span>Vanilla JS</span>
                             </div>
                         </div>
                     </div>
@@ -197,7 +182,8 @@
                 </div>
                 <p class="contact-desc">I am actively looking for new opportunities. Whether you have a question or just want to say hi, my inbox is always open!</p>
                 
-                <form id="contact-form" class="contact-form" action="#">
+                <!-- ✅ Contact form — sends email via EmailJS -->
+                <form id="contact-form" class="contact-form">
                     <div class="form-group">
                         <input type="text" id="name" name="name" placeholder="Your Name" required>
                     </div>
@@ -207,7 +193,9 @@
                     <div class="form-group">
                         <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Message</button>
+                    <button type="submit" class="btn btn-primary" id="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
                     <div id="form-status" class="form-status"></div>
                 </form>
 
