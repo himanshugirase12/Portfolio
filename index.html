@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Himanshu Girase - Aspiring Full Stack Developer (MERN Stack)">
-    <title>Himanshu Girase | Portfolio</title>
+    <meta name="description" content="Himanshu Girase — Aspiring Full Stack Developer building with the MERN stack.">
+    <title>Himanshu Girase | Full Stack Developer</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
-    <!-- ✅ EmailJS SDK -->
+    <!-- EmailJS SDK — see script.js for setup notes -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
     <header id="navbar">
         <nav class="container">
-            <div class="logo">HG.</div>
+            <div class="logo"><span class="dot"></span> himanshu.dev</div>
             <ul class="nav-links">
                 <li><a href="#hero">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -32,141 +33,166 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section id="hero" class="hero-section text-center fade-in">
-            <div class="container hero-content">
-                <div class="avatar-container">
-                    <img src="./assets/img/profile_avatar_1775116876275.png" alt="Himanshu Girase" class="avatar">
-                    <div class="glow"></div>
+        <!-- Hero -->
+        <section id="hero" class="hero-section">
+            <div class="container hero-grid">
+                <div class="hero-text">
+                    <p class="eyebrow slide-up">available for opportunities</p>
+                    <h1 class="slide-up delay-1">Himanshu Girase</h1>
+                    <p class="hero-role slide-up delay-1">Aspiring Full Stack Developer<span class="cursor"></span></p>
+                    <p class="tagline slide-up delay-2">I build responsive, dynamic web applications with the MERN stack — from database schema to deployed product.</p>
+                    <div class="hero-actions slide-up delay-3">
+                        <a href="#projects" class="btn btn-primary">View My Work</a>
+                        <a href="assets/Resume.pdf"
+                           download="Himanshu_Girase_Resume.pdf"
+                           class="btn btn-secondary"
+                           id="resume-btn">
+                            <i class="fas fa-download"></i> Download Resume
+                        </a>
+                    </div>
+                    <div class="social-links slide-up delay-4">
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
                 </div>
-                <h1 class="slide-up">Hi, I'm <span class="highlight">Himanshu Girase</span></h1>
-                <h2 class="slide-up delay-1">Aspiring Full Stack Developer</h2>
-                <p class="tagline slide-up delay-2">I build responsive, dynamic, and beautiful web applications using the MERN stack.</p>
-                <div class="hero-actions slide-up delay-3">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <!-- ✅ Download Resume Button — points to your resume PDF -->
-                    <a href="./assets/resume/Himanshu_Girase_Resume.pdf" 
-                       download="Himanshu_Girase_Resume.pdf"
-                       class="btn btn-secondary"
-                       id="resume-btn">
-                        <i class="fas fa-download"></i> Download Resume
-                    </a>
-                </div>
-                <div class="social-links slide-up delay-4">
-                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+
+                <div class="hero-visual slide-in-right delay-1">
+                    <div class="editor-card">
+                        <div class="editor-titlebar">
+                            <span class="editor-dot red"></span>
+                            <span class="editor-dot yellow"></span>
+                            <span class="editor-dot green"></span>
+                            <span class="tab">profile.js</span>
+                        </div>
+                        <div class="editor-body">
+                            <div class="avatar-wrap">
+                                <img src="./assets/img/profile_avatar_1775116876275.png" alt="Himanshu Girase" class="avatar">
+                            </div>
+                            <div><span class="com">// currently learning</span></div>
+                            <div><span class="kw">const</span> <span class="fn">stack</span> = [<span class="str">"React"</span>, <span class="str">"Node.js"</span>, <span class="str">"MongoDB"</span>];</div>
+                            <div><span class="kw">const</span> <span class="fn">status</span> = <span class="str">"open to work"</span>;</div>
+                            <div><span class="kw">export default</span> HimanshuGirase;</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- About Me Section -->
+        <!-- About -->
         <section id="about" class="about-section slide-in-left">
             <div class="container">
                 <div class="section-header">
-                    <h2><span class="highlight">01.</span> About Me</h2>
+                    <p class="eyebrow">01. about</p>
+                    <h2>Who I am</h2>
                 </div>
                 <div class="about-content">
                     <p>
-                        I am a passionate developer currently learning JavaScript, React, and backend technologies. 
-                        I enjoy building real-world projects and constantly improving my problem-solving skills. 
-                        My journey in tech is driven by curiosity and a desire to create impactful digital experiences.
+                        I'm a developer building real, end-to-end projects with the <strong>MERN stack</strong> —
+                        not just following tutorials, but shipping working applications with auth, databases,
+                        deployments, and the debugging that comes with all three.
                     </p>
                     <p>
-                        When I'm not coding, you can find me exploring new technologies, reading tech blogs, 
-                        or optimizing my workflow. I am currently open to exciting opportunities to contribute, learn, and grow.
+                        Right now I'm deepening my React and Node.js skills while building a portfolio of
+                        projects I can talk through in detail: what I built, what broke, and how I fixed it.
+                        I'm actively looking for opportunities to contribute, learn, and grow as a developer.
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- Skills Section -->
+        <!-- Skills -->
         <section id="skills" class="skills-section slide-in-right">
             <div class="container">
                 <div class="section-header">
-                    <h2><span class="highlight">02.</span> My Skills</h2>
+                    <p class="eyebrow">02. skills</p>
+                    <h2>What I work with</h2>
                 </div>
                 <div class="skills-grid">
                     <div class="skill-card">
                         <i class="fab fa-html5 skill-icon html-color"></i>
                         <h3>HTML5</h3>
+                        
                     </div>
                     <div class="skill-card">
                         <i class="fab fa-css3-alt skill-icon css-color"></i>
                         <h3>CSS3</h3>
+                        
                     </div>
                     <div class="skill-card">
                         <i class="fab fa-js skill-icon js-color"></i>
                         <h3>JavaScript</h3>
+                       
                     </div>
                     <div class="skill-card">
                         <i class="fab fa-react skill-icon react-color"></i>
-                        <h3>React (Learning)</h3>
+                        <h3>React</h3>
+                        
                     </div>
                     <div class="skill-card">
                         <i class="fab fa-node-js skill-icon node-color"></i>
-                        <h3>Node.js (Basic)</h3>
+                        <h3>Node.js</h3>
+                        
+                    </div>
+                    <div class="skill-card">
+                        <i class="devicon-express-original skill-icon express-color"></i>
+                        <h3>Express.js</h3>
+                        
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-database skill-icon mongo-color"></i>
+                        <h3>MongoDB</h3>
+                        
                     </div>
                     <div class="skill-card">
                         <i class="fab fa-git-alt skill-icon git-color"></i>
                         <h3>Git & GitHub</h3>
+                        
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Projects Section -->
+        <!-- Projects -->
         <section id="projects" class="projects-section fade-in">
             <div class="container">
                 <div class="section-header">
-                    <h2><span class="highlight">03.</span> Featured Projects</h2>
+                    <p class="eyebrow">03. projects</p>
+                    <h2>Featured Projects</h2>
                 </div>
                 <div class="projects-grid">
                     <div class="project-card">
                         <div class="project-image">
-                            <img src="./assets/img/ecommerce_project_1775116965191.png" alt="E-commerce Website">
+                            <img src="./assets/img/ecommerce_project_1775116965191.png" alt="EduStream learning platform">
                             <div class="project-overlay">
-                                <a href="#" class="btn-sm"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                                <a href="#" class="btn-sm btn-outline"><i class="fab fa-github"></i> Code</a>
+                                <a href="https://lms-mern-hdg3.vercel.app/" class="btn-sm"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                                <a href="https://github.com/himanshugirase12/lms-mern" class="btn-sm btn-outline"><i class="fab fa-github"></i> Code</a>
                             </div>
                         </div>
                         <div class="project-info">
-                            <h3>E-commerce Website</h3>
-                            <p>A fully responsive e-commerce web application featuring a functional shopping cart, product listings, and sleek UI. Built to demonstrate front-end fundamentals.</p>
+                            <span class="project-status live"><span class="dot"></span> Live</span>
+                            <h3>EduStream — Learning Platform</h3>
+                            <p>A full MERN LMS with JWT auth, instructor course/lesson management, video streaming with HTTP range requests, Razorpay checkout, and live progress tracking. Deployed end-to-end.</p>
                             <div class="project-tech">
-                                <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                                <span>React</span><span>Node.js</span><span>Express</span><span>MongoDB</span>
                             </div>
                         </div>
                     </div>
+
                     <div class="project-card">
                         <div class="project-image">
-                            <img src="./assets/img/task_board_project_1775117119788.png" alt="Task Management App">
+                            <img src="./assets/img/chat_app_project_1775117140893.png" alt="RAG chatbot project">
                             <div class="project-overlay">
-                                <a href="#" class="btn-sm"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                                <a href="#" class="btn-sm btn-outline"><i class="fab fa-github"></i> Code</a>
+                                <a href="#" class="btn-sm" disabled title="Coming soon"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                                <a href="#" class="btn-sm btn-outline" disabled title="Coming soon"><i class="fab fa-github"></i> Code</a>
                             </div>
                         </div>
                         <div class="project-info">
-                            <h3>Task Management Dashboard</h3>
-                            <p>A drag-and-drop kanban board for managing daily tasks and workflows. Includes task categorization and a customizable dark mode interface.</p>
+                            <span class="project-status progress"><span class="dot"></span> In Progress</span>
+                            <h3>RAG Chatbot</h3>
+                            <p>An AI-powered chatbot with retrieval-augmented generation — a sidebar knowledge base, per-answer source citations, and document search, built on MERN plus an LLM API.</p>
                             <div class="project-tech">
-                                <span>React</span><span>CSS Modules</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="./assets/img/chat_app_project_1775117140893.png" alt="Real-Time Chat App">
-                            <div class="project-overlay">
-                                <a href="#" class="btn-sm"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                                <a href="#" class="btn-sm btn-outline"><i class="fab fa-github"></i> Code</a>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <h3>Real-Time Chat Application</h3>
-                            <p>A real-time messaging platform allowing users to communicate instantly in separate rooms. Incorporates a fast backend architecture.</p>
-                            <div class="project-tech">
-                                <span>Node.js</span><span>Socket.io</span><span>Vanilla JS</span>
+                                <span>React</span><span>Node.js</span><span>LLM API</span><span>RAG</span>
                             </div>
                         </div>
                     </div>
@@ -174,15 +200,15 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
+        <!-- Contact -->
         <section id="contact" class="contact-section text-center fade-in">
             <div class="container">
                 <div class="section-header center">
-                    <h2><span class="highlight">04.</span> Get In Touch</h2>
+                    <p class="eyebrow">04. contact</p>
+                    <h2>Get In Touch</h2>
                 </div>
-                <p class="contact-desc">I am actively looking for new opportunities. Whether you have a question or just want to say hi, my inbox is always open!</p>
-                
-                <!-- ✅ Contact form — sends email via EmailJS -->
+                <p class="contact-desc">I'm actively looking for new opportunities. Whether you have a question or just want to say hi, my inbox is always open.</p>
+
                 <form id="contact-form" class="contact-form">
                     <div class="form-group">
                         <input type="text" id="name" name="name" placeholder="Your Name" required>
@@ -196,7 +222,7 @@
                     <button type="submit" class="btn btn-primary" id="submit-btn">
                         <i class="fas fa-paper-plane"></i> Send Message
                     </button>
-                    <div id="form-status" class="form-status"></div>
+                    <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
                 </form>
 
                 <div class="contact-actions">
@@ -211,7 +237,7 @@
 
     <footer>
         <div class="container text-center">
-            <p>Designed & Built by <strong>Himanshu Girase</strong> &copy; <span id="year"></span></p>
+            <p>$ whoami <span style="color: var(--ink-soft);">&mdash;</span> Himanshu Girase, built with HTML/CSS/JS &copy; <span id="year"></span></p>
         </div>
     </footer>
 

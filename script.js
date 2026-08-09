@@ -1,40 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Current year in footer
+    // Footer year
     const yearEl = document.getElementById('year');
-    if (yearEl) {
-        yearEl.textContent = new Date().getFullYear();
-    }
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // Navbar scroll effect
+    // Navbar background on scroll
     const header = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
+        header.classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    // Mobile Menu Toggle
+    // Mobile menu toggle
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     const navItems = document.querySelectorAll('.nav-links li a');
 
     if (hamburger) {
         hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+            const isOpen = navLinks.classList.toggle('active');
             const icon = hamburger.querySelector('i');
-            if (navLinks.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
+            icon.classList.toggle('fa-bars', !isOpen);
+            icon.classList.toggle('fa-times', isOpen);
         });
     }
 
-    // Close mobile menu on click
     navItems.forEach(item => {
         item.addEventListener('click', () => {
             if (navLinks.classList.contains('active')) {
@@ -46,67 +34,81 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Smooth scrolling for anchor links 
+    // Smooth scroll for in-page anchors
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
-            if (href !== "#") {
+            if (href !== '#') {
                 e.preventDefault();
                 const target = document.querySelector(href);
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
             }
         });
     });
 
-    // Intersection Observer for scroll animations
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.15
-    };
-
-    const observer = new IntersectionObserver((entries, observer) => {
+    // Scroll-triggered reveal animations
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('in-view');
-                // Optional: Stop observing once animation has triggered
-                // observer.unobserve(entry.target);
-            }
+            if (entry.isIntersecting) entry.target.classList.add('in-view');
         });
-    }, observerOptions);
+    }, { root: null, rootMargin: '0px', threshold: 0.15 });
 
-    // Observe elements with animation classes
-    const animatedElements = document.querySelectorAll('.fade-in, .slide-up, .slide-in-left, .slide-in-right');
-    animatedElements.forEach(el => observer.observe(el));
+    document.querySelectorAll('.fade-in, .slide-up, .slide-in-left, .slide-in-right')
+        .forEach(el => observer.observe(el));
 
-    // Handle Contact Form Submission
+   
+    const EMAILJS_PUBLIC_KEY = 'KD9Tmj3021nEb4mUJ';
+    const EMAILJS_SERVICE_ID = 'service_esi8khw';  
+    const EMAILJS_TEMPLATE_ID = 'template_h1kbjs8';
+
+    const isEmailJsConfigured = EMAILJS_PUBLIC_KEY && EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID;
+
+    if (isEmailJsConfigured && window.emailjs) {
+        emailjs.init(EMAILJS_PUBLIC_KEY);
+    }
+
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const statusDiv = document.getElementById('form-status');
             const submitBtn = contactForm.querySelector('button[type="submit"]');
-            
-            // Simulating a network request
             const originalBtnText = submitBtn.innerHTML;
+
+            if (!isEmailJsConfigured) {
+                statusDiv.textContent = 'Contact form isn\u2019t wired up yet — add your EmailJS keys in script.js.';
+                statusDiv.classList.add('error');
+                return;
+            }
+
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             submitBtn.disabled = true;
-            
-            setTimeout(() => {
-                statusDiv.textContent = 'Message sent successfully! I will get back to you soon.';
-                contactForm.reset();
-                submitBtn.innerHTML = originalBtnText;
-                submitBtn.disabled = false;
-                
-                // Clear success message after 5 seconds
-                setTimeout(() => {
-                    statusDiv.textContent = '';
-                }, 5000);
-            }, 1500);
+            statusDiv.classList.remove('error');
+
+            const templateParams = {
+                from_name: document.getElementById('name').value,
+                from_email: document.getElementById('email').value,
+                message: document.getElementById('message').value,
+            };
+
+            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+                .then(() => {
+                    statusDiv.textContent = 'Message sent successfully! I\u2019ll get back to you soon.';
+                    contactForm.reset();
+                })
+                .catch((err) => {
+                    console.error('EmailJS error:', err);
+                    statusDiv.textContent = 'Something went wrong — please try again or email me directly.';
+                    statusDiv.classList.add('error');
+                })
+                .finally(() => {
+                    submitBtn.innerHTML = originalBtnText;
+                    submitBtn.disabled = false;
+                    setTimeout(() => {
+                        statusDiv.textContent = '';
+                        statusDiv.classList.remove('error');
+                    }, 6000);
+                });
         });
     }
 });
